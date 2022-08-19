@@ -8,10 +8,12 @@
       * {
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+        margin: 0;
+        padding: 0;
       }
       body {
         background-color: #222;
-        min-height: 100%;
+        min-height: 100vh;
         text-align: center;
         font: 14px "Helvetica Neue", "Helvetica", "Arial", sans-serif;
         color: #f6f4ea;
@@ -19,20 +21,29 @@
       a {
         color: #f6f4ea;
       }
-      .page-wrapper {
-        width: 100%;
-      }
       h1 {
         font-weight: normal;
         font-size: 4.2em;
-        margin-top: 15%;
-        margin-bottom: 0.8em;
+      }
+      .grid-container {
+        display: grid;
+        grid-template-rows: 11fr 1fr;
+      }
+      .center-with-flex {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      footer {
+        background-color: #f6f4ea;
+        color: #222;
       }
     </style>
   </head>
-  <body>
-    <div class="page-wrapper">
+  <body class="grid-container">
+    <span class="center-with-flex">
       <h1>Dale, dejá de <a href="https://hueve.ar">hueve.ar</a> (:</h1>
-    </div>
+    </span>
+    <footer class="center-with-flex">ProTip™: usame como página de inicio</footer>
   </body>
 </html>
