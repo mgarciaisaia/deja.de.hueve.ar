@@ -39,8 +39,9 @@ jobs:
         run: ruby ./crawl/hacker-news.rb
       - name: Create build
         run: |
-          mkdir -p build
-          cp index.html CNAME hacker-news.html build/
+          mkdir -p build build/hn
+          cp index.html CNAME build/
+          cp hacker-news.html build/hn/index.html
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
