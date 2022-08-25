@@ -35,7 +35,8 @@ jobs:
         uses: actions/checkout@v3
       - name: Setup Pages
         uses: actions/configure-pages@v1
-      - name: Snapshot news sites
+      - name: Snapshot news sites at midnight
+        if: github.event.schedule
         run: ruby ./crawl/hacker-news.rb
       - name: Create build
         run: |
