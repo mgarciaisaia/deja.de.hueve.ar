@@ -35,6 +35,11 @@ jobs:
         uses: actions/checkout@v3
       - name: Setup Pages
         uses: actions/configure-pages@v1
+      - name: Hydrate previous site version
+        uses: actions/download-artifact@v3
+        with:
+          name: github-pages
+          path: './build'
       - name: Snapshot news sites at midnight
         if: github.event.schedule
         run: ruby ./crawl/hacker-news.rb
@@ -47,6 +52,7 @@ jobs:
         uses: actions/upload-pages-artifact@v1
         with:
           path: './build'
+          retention-days: 2
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
