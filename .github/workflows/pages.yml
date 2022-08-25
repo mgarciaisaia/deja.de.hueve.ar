@@ -40,12 +40,12 @@ jobs:
           mkdir -p build build/hn
           cp index.html CNAME build/
       - name: Snapshot news sites at midnight
-        if: github.event.schedule
+        if: ${{ github.event_name == 'schedule' }}
         run: |
           ruby ./crawl/hacker-news.rb
           cp hacker-news.html build/hn/index.html
       - name: Fetch existing news sites snapshots on other builds
-        if: ! github.event.schedule
+        if: ${{ github.event_name != 'schedule' }}
         run: |
           wget https://deja.de.hueve.ar/hn/index.html -O build/hn/index.html
       - name: Upload artifact
