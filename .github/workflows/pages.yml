@@ -46,12 +46,15 @@ jobs:
       - name: Snapshot news sites at midnight
         if: ${{ github.event_name == 'schedule' }}
         run: |
-          ruby ./crawl/hacker-news.rb
+          bundle exec ruby ./crawl/hacker-news.rb
+          bundle exec ruby ./crawl/perfil.rb
           cp hacker-news.html build/hn/index.html
+          cp perfil.html build/perfil/index.html
       - name: Fetch existing news sites snapshots on other builds
         if: ${{ github.event_name != 'schedule' }}
         run: |
           wget https://deja.de.hueve.ar/hn/index.html -O build/hn/index.html
+          wget https://deja.de.hueve.ar/perfil/index.html -O build/perfil/index.html
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
