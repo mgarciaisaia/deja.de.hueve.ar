@@ -41,7 +41,7 @@ jobs:
           bundler-cache: true
       - name: Create build
         run: |
-          mkdir -p build build/hn
+          mkdir -p build build/hn build/perfil
           cp index.html CNAME build/
       - name: Snapshot news sites at midnight
         if: ${{ github.event_name == 'schedule' }}
